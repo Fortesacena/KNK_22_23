@@ -157,7 +157,7 @@ public class Room_Details_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pagination.setPageCount(8);
+        pagination.setPageCount(7);
         Locale.setDefault(new Locale("sq"));
         albanianFlag.setOnMouseClicked(e->{
             translateAlbanian();
