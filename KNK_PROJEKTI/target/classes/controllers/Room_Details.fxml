@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Room_Details_Controller">
+    <children>
+        <StackPane layoutX="200.0" layoutY="104.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <BorderPane layoutX="214.0" layoutY="93.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <left>
+                                <AnchorPane prefHeight="550.0" prefWidth="205.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <AnchorPane layoutX="14.0" layoutY="100.0" prefHeight="550.0" prefWidth="208.0" styleClass="nav-form" stylesheets="@../css/DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <FontAwesomeIcon glyphName="USER" layoutX="66.0" layoutY="128.0" size="8em" />
+                                                <Label fx:id="wlc_student_rd" layoutX="40.0" layoutY="153.0" text="Welcome Student">
+                                                    <font>
+                                                        <Font name="Tahoma" size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Button fx:id="studentApply_btn" layoutY="220.0" mnemonicParsing="false" onAction="#switchToStudentApply" prefHeight="54.0" prefWidth="196.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="Apply">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="PLUS_CIRCLE" />
+                                                    </graphic>
+                                                </Button>
+                                                <Line endX="90.19998168945312" layoutX="109.0" layoutY="192.0" startX="-100.0" />
+                                                <Button fx:id="Studentstatus_btn" layoutY="274.0" mnemonicParsing="false" onAction="#switchToStudentStatus" prefHeight="54.0" prefWidth="196.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="Status">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="CHECK" />
+                                                    </graphic>
+                                                </Button>
+                                                <Button fx:id="RoomDetails" layoutY="328.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="196.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="Room Details">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="HOTEL" />
+                                                    </graphic>
+                                                </Button>
+                                                <Button fx:id="logout_btn" layoutX="14.0" layoutY="511.0" mnemonicParsing="false" onAction="#switchToLogIn" prefHeight="34.0" prefWidth="33.0" styleClass="logout-btn" stylesheets="@../css/DashboardDesign.css">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="SIGN_OUT" size="1.6em" />
+                                                    </graphic>
+                                                </Button>
+                                                <Label fx:id="signout_rd" layoutX="56.0" layoutY="518.0" text="Sign Out">
+                                                    <font>
+                                                        <Font name="Tahoma" size="16.0" />
+                                                    </font>
+                                                </Label>
+                                    <ImageView fx:id="albanianFlag" fitHeight="28.0" fitWidth="41.0" layoutX="11.0" layoutY="438.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/Flag_of_Albania.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="americanFlag" fitHeight="28.0" fitWidth="41.0" layoutX="11.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/America_Flag.png" />
+                                       </image>
+                                    </ImageView>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                            </left>
+                            <center>
+                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+                                    <children>
+                                        <Pagination fx:id="pagination" maxPageIndicatorCount="5" pageCount="12" prefHeight="466.0" prefWidth="500.0">
+                                            <StackPane.margin>
+                                                <Insets />
+                                            </StackPane.margin>
+                                        </Pagination>
+                                        <Button fx:id="showphotos_rd" mnemonicParsing="false" onAction="#getImages" text="Click to show dormitory photos" StackPane.alignment="TOP_CENTER">
+                                            <StackPane.margin>
+                                                <Insets top="10.0" />
+                                            </StackPane.margin>
+                                        </Button>
+                                    </children>
+                                </StackPane>
+                            </center>
+                        </BorderPane>
+                    </children>
+                </AnchorPane>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

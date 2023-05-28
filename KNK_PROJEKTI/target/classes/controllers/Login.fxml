@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="501.0" prefWidth="643.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Login_User_Controller">
+    <children>
+        <ImageView fitHeight="130.0" fitWidth="146.0" layoutX="254.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/logoqs.jpg" />
+            </image>
+        </ImageView>
+        <Label fx:id="wlc_admin_Label" layoutX="274.0" layoutY="177.0" text="Welcome !">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <TextField fx:id="a_username" layoutX="274.0" layoutY="259.0" onKeyPressed="#goToPassword" promptText="Enter your username" style="-fx-border-color: red; -fx-background-color: transparent; -fx-border-width: 0 0 2px 0;" />
+        <Label fx:id="username_admin_label1" layoutX="196.0" layoutY="276.0" text="Username:">
+            <font>
+                <Font size="14.0" />
+            </font></Label>
+        <Button fx:id="a_loginbtn" layoutX="254.0" layoutY="379.0" mnemonicParsing="false" onAction="#HandleLogin" prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: red; -fx-border-radius: 20px;" text="Log In" />
+        <Label fx:id="a_donthaveacc" layoutX="212.0" layoutY="443.0" text="Don't have an account?" />
+        <PasswordField fx:id="a_password" layoutX="274.0" layoutY="303.0" onKeyPressed="#login" promptText="Enter your password" style="-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 2px 0;" />
+        <Label fx:id="messageLabel" layoutX="308.0" layoutY="222.0" textAlignment="CENTER">
+            <font>
+                <Font size="14.0" />
+            </font></Label>
+        <Button fx:id="a_signupbtn" layoutX="361.0" layoutY="439.0" mnemonicParsing="false" onAction="#HandleAdminSignUpButton" style="-fx-background-color: transparent;" text="Sign Up" textFill="#ed0b0b" />
+      <ImageView fx:id="albanianFlag" fitHeight="27.0" fitWidth="39.0" layoutX="14.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Flag_of_Albania.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="americanFlag" fitHeight="27.0" fitWidth="39.0" layoutX="14.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/America_Flag.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="pass_admin_label" layoutX="198.0" layoutY="317.0" text="Password:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
