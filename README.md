@@ -1,7 +1,7 @@
 # KNK
 
 This repository contains a Dormitory Management System. The system provides a user-friendly interface to manage various tasks related to dormitory management, including student registration, room allocation.
-The application is built using JavaFX, so make sure you have JavaFX installed on your system.
+The application is built using JavaFX program, so make sure you have JavaFX installed on your system.
 
 Contributors:
 
