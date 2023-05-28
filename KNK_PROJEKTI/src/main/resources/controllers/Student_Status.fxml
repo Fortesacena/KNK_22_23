@@ -3,6 +3,9 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -77,38 +80,22 @@
                                             <children>
                                                 <AnchorPane layoutX="238.0" layoutY="144.0" prefHeight="550.4" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <children>
-                                                        <Label fx:id="Status_of_std" alignment="CENTER" layoutX="59.0" layoutY="96.0" prefHeight="85.0" prefWidth="585.0" text="Your status is:">
+                                                        <Label fx:id="Status_of_std" alignment="CENTER" layoutX="13.0" layoutY="77.0" prefHeight="35.0" prefWidth="361.0" text="Write your personal number: ">
                                                             <font>
-                                                                <Font size="56.0" />
+                                                                <Font size="20.0" />
                                                             </font>
                                                         </Label>
-                                          <Label fx:id="Dormitory_status" layoutX="138.0" layoutY="275.0" prefHeight="31.0" prefWidth="111.0" text="Dormitory:">
-                                             <font>
-                                                <Font size="21.0" />
-                                             </font>
-                                          </Label>
                                           <Label fx:id="dormitoryField" layoutX="193.0" layoutY="278.0" prefHeight="26.0" prefWidth="81.0" />
-                                          <Label fx:id="Room_status" layoutX="455.0" layoutY="275.0" prefHeight="31.0" prefWidth="81.0" text="Room:">
-                                             <font>
-                                                <Font size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="roomField" layoutX="410.0" layoutY="276.0" prefHeight="30.0" prefWidth="82.0" />
-                                          <Label layoutX="319.0" layoutY="194.0" prefHeight="35.0" prefWidth="132.0" style="-fx-text-fill: green;" text="Nothing" textAlignment="CENTER">
-                                             <font>
-                                                <Font size="24.0" />
-                                             </font>
-                                          </Label>
-                                          <Label layoutX="248.0" layoutY="274.0" prefHeight="34.0" prefWidth="53.0" text="Nr.">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                          </Label>
-                                          <Label layoutX="543.0" layoutY="274.0" prefHeight="35.0" prefWidth="59.0" text="Nr.">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                          </Label>
+                                          <TextField fx:id="personalNumberField" layoutX="333.0" layoutY="82.0" prefHeight="24.0" prefWidth="154.0" promptText="0000" />
+                                          <TableView fx:id="tableView" layoutX="32.0" layoutY="188.0" prefHeight="247.0" prefWidth="601.0">
+                                            <columns>
+                                              <TableColumn fx:id="prn_std" prefWidth="140.33334350585938" text="Personal Number" />
+                                                <TableColumn fx:id="status_stds" prefWidth="161.0" text="Status" />
+                                                <TableColumn fx:id="dormitory_stds" prefWidth="156.0" text="Dormitory" />
+                                                <TableColumn fx:id="room_stds" minWidth="5.33331298828125" prefWidth="146.66668701171875" text="Room" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="searchpn" layoutX="522.0" layoutY="82.0" mnemonicParsing="false" onAction="#searchpn" text="Search" />
                                                     </children>
                                                 </AnchorPane>
                                             </children>
