@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Admin_Dashboard_Controller">
+   <children>
+      <StackPane layoutX="366.0" layoutY="199.0" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <BorderPane layoutX="456.0" layoutY="131.0" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <left>
+                        <AnchorPane prefHeight="600.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@../css/DashboardDesign.css" BorderPane.alignment="CENTER">
+                           <children>
+                              <FontAwesomeIcon glyphName="USER" layoutX="53.0" layoutY="135.0" size="10em" />
+                              <Label fx:id="wlc_admin_dashboard" layoutX="43.0" layoutY="161.0" text="Welcome Admin">
+                                 <font>
+                                    <Font name="Tahoma" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="188.8000030517578" endY="-1.52587890625E-5" layoutY="204.0" startX="9.992877006530762" startY="-1.52587890625E-5" />
+                              <Button fx:id="home_btn" layoutX="-1.0" layoutY="231.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="55.0" prefWidth="199.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="HOME">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="DASHBOARD" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="applicationDetails_btn" layoutY="280.0" mnemonicParsing="false" onAction="#switchToApplicationDetails" prefHeight="55.0" prefWidth="199.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="Application Details">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="USERS" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="manageRooms_btn" layoutY="335.0" mnemonicParsing="false" onAction="#switchToManageRooms" prefHeight="55.0" prefWidth="199.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="Manage Rooms">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="HOTEL" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="logout_btn" layoutX="17.0" layoutY="549.0" mnemonicParsing="false" onAction="#switchToLogIn" prefHeight="26.0" prefWidth="34.0" styleClass="logout-btn" stylesheets="@../css/DashboardDesign.css">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="SIGN_OUT" size="1.4em" />
+                                 </graphic>
+                              </Button>
+                              <Label fx:id="Signout_dashboard" layoutX="61.0" layoutY="553.0" text="Sign Out">
+                                 <font>
+                                    <Font name="Tahoma" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="25.0" fitWidth="41.0" layoutX="14.0" layoutY="495.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="albanianFlag" fitHeight="25.0" fitWidth="41.0" layoutX="14.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Flag_of_Albania.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="americanFlag" fitHeight="22.0" fitWidth="36.0" layoutX="14.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/America_Flag.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane layoutX="381.0" layoutY="46.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="11.0" layoutY="20.0" prefHeight="200.0" prefWidth="778.0" stylesheets="@../css/DashboardDesign.css">
+                                       <children>
+                                          <AnchorPane layoutX="14.0" layoutY="19.0" prefHeight="162.0" prefWidth="246.0" styleClass="card" stylesheets="@../css/DashboardDesign.css">
+                                             <children>
+                                                <FontAwesomeIcon glyphName="CHECK" layoutX="14.0" layoutY="102.0" size="5em" />
+                                                <Label fx:id="dashboard_totalApplicants" alignment="CENTER_RIGHT" layoutX="122.0" layoutY="35.0" prefHeight="30.0" prefWidth="98.0" text="0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="Totalappl_dashboard" layoutX="79.0" layoutY="111.0" text="Total Applicants">
+                                                   <font>
+                                                      <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="266.0" layoutY="19.0" prefHeight="162.0" prefWidth="246.0" styleClass="card" stylesheets="@../css/DashboardDesign.css">
+                                             <children>
+                                                <FontAwesomeIcon glyphName="FEMALE" layoutX="14.0" layoutY="102.0" size="5em" />
+                                                <Label fx:id="dashboard_femaleApplicants" alignment="CENTER_RIGHT" layoutX="86.0" layoutY="35.0" prefHeight="30.0" prefWidth="118.0" text="0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="female_app" layoutX="65.0" layoutY="111.0" text="Female Applicants">
+                                                   <font>
+                                                      <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="517.0" layoutY="19.0" prefHeight="162.0" prefWidth="246.0" styleClass="card" stylesheets="@../css/DashboardDesign.css">
+                                             <children>
+                                                <FontAwesomeIcon glyphName="MALE" layoutX="14.0" layoutY="102.0" size="5em" />
+                                                <Label fx:id="dashboard_maleApplicants" alignment="CENTER_RIGHT" layoutX="92.0" layoutY="35.0" prefHeight="30.0" prefWidth="110.0" text="0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="male_app" layoutX="78.0" layoutY="111.0" text="Male Applicants">
+                                                   <font>
+                                                      <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="11.0" layoutY="228.0" prefHeight="354.0" prefWidth="778.0" stylesheets="@../css/DashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <AreaChart fx:id="dashboard_areaChart" layoutY="14.0" prefHeight="326.0" prefWidth="763.0" title="Total Applicators Chart">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </AreaChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

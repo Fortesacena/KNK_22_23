@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentStatus_Controller">
+    <children>
+        <StackPane layoutX="370.0" layoutY="183.0" prefHeight="550.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <BorderPane layoutX="375.0" layoutY="159.0" prefHeight="550.4" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <left>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <AnchorPane layoutX="27.0" layoutY="161.0" prefHeight="550.4" prefWidth="227.2" styleClass="nav-form" stylesheets="@../css/DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <FontAwesomeIcon glyphName="USER" layoutX="62.0" layoutY="123.0" size="8em" />
+                                                <Line endX="90.69998168945312" layoutX="100.0" layoutY="180.0" startX="-90.0999984741211" />
+                                                <Label fx:id="wlcstudent_status" layoutX="30.0" layoutY="137.0" text="Welcome Student">
+                                                    <font>
+                                                        <Font name="Tahoma" size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Button fx:id="studentApply_btn" layoutX="2.0" layoutY="227.0" mnemonicParsing="false" onAction="#switchToStudentApply" prefHeight="54.0" prefWidth="194.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="Apply">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="PLUS_CIRCLE" />
+                                                    </graphic>
+                                                </Button>
+                                                <Button fx:id="Studentstatus_btn" layoutX="2.0" layoutY="281.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="194.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="Status">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="CHECK" />
+                                                    </graphic>
+                                                </Button>
+                                                <Button fx:id="logout_btn" layoutX="14.0" layoutY="511.0" mnemonicParsing="false" onAction="#switchToLogIn" prefHeight="34.0" prefWidth="33.0" styleClass="logout-btn" stylesheets="@../css/DashboardDesign.css">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="SIGN_OUT" size="1.6em" />
+                                                    </graphic>
+                                                </Button>
+                                                <Label fx:id="signout_status" layoutX="55.0" layoutY="516.0" text="Sign Out">
+                                                    <font>
+                                                        <Font name="Tahoma" size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <Button fx:id="roomDetails_btn1" layoutX="4.0" layoutY="329.0" mnemonicParsing="false" onAction="#switchToRoomDetails" prefHeight="54.0" prefWidth="194.0" styleClass="nav-btn" stylesheets="@../css/DashboardDesign.css" text="Room Details">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="HOTEL" />
+                                                    </graphic>
+                                                </Button>
+                                    <ImageView fx:id="albanianFlag" fitHeight="27.0" fitWidth="36.0" layoutX="13.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/Flag_of_Albania.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="americanFlag" fitHeight="27.0" fitWidth="36.0" layoutX="13.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/America_Flag.png" />
+                                       </image>
+                                    </ImageView>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                            </left>
+                            <center>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <AnchorPane layoutX="197.0" layoutY="127.0" prefHeight="550.4" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <AnchorPane layoutX="238.0" layoutY="144.0" prefHeight="550.4" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <Label fx:id="Status_of_std" alignment="CENTER" layoutX="59.0" layoutY="96.0" prefHeight="85.0" prefWidth="585.0" text="Your status is:">
+                                                            <font>
+                                                                <Font size="56.0" />
+                                                            </font>
+                                                        </Label>
+                                          <Label fx:id="Dormitory_status" layoutX="138.0" layoutY="275.0" prefHeight="31.0" prefWidth="111.0" text="Dormitory:">
+                                             <font>
+                                                <Font size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="dormitoryField" layoutX="193.0" layoutY="278.0" prefHeight="26.0" prefWidth="81.0" />
+                                          <Label fx:id="Room_status" layoutX="455.0" layoutY="275.0" prefHeight="31.0" prefWidth="81.0" text="Room:">
+                                             <font>
+                                                <Font size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="roomField" layoutX="410.0" layoutY="276.0" prefHeight="30.0" prefWidth="82.0" />
+                                          <Label layoutX="319.0" layoutY="194.0" prefHeight="35.0" prefWidth="132.0" style="-fx-text-fill: green;" text="Nothing" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="248.0" layoutY="274.0" prefHeight="34.0" prefWidth="53.0" text="Nr.">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="543.0" layoutY="274.0" prefHeight="35.0" prefWidth="59.0" text="Nr.">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                            </center>
+                        </BorderPane>
+                    </children>
+                </AnchorPane>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>
