@@ -1,43 +1,53 @@
 package controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import models.Application;
+import services.ConnectionUtil;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class StudentStatus_Controller implements Initializable {
 
-    public Button roomDetails_btn1;
+    @FXML
+    private TextField personalNumberField;
 
     @FXML
-    private Button Studentstatus_btn;
+    private Button searchButton;
 
     @FXML
-    private Label dormitoryField;
+    private TableView<Application> tableView;
 
     @FXML
-    private Button logout_btn;
+    private TableColumn<Application, String> prn_std;
 
     @FXML
-    private Label roomField;
+    private TableColumn<Application, String> status_stds;
 
     @FXML
-    private TextField statusLabel;
+    private TableColumn<Application, String> dormitory_stds;
 
     @FXML
-    private Button studentApply_btn;
+    private TableColumn<Application, String> room_stds;
+
+    private ObservableList<Application> tableData;
+
+    @FXML
+    private Label Status_of_std;
 
     @FXML
     private Label Dormitory_status;
@@ -46,7 +56,19 @@ public class StudentStatus_Controller implements Initializable {
     private Label Room_status;
 
     @FXML
-    private Label Status_of_std;
+    private Label statusLabel;
+
+    @FXML
+    private Button roomDetails_btn1;
+
+    @FXML
+    private Button Studentstatus_btn;
+
+    @FXML
+    private Button logout_btn;
+
+    @FXML
+    private Button studentApply_btn;
 
     @FXML
     private Label wlcstudent_status;
@@ -60,29 +82,18 @@ public class StudentStatus_Controller implements Initializable {
     @FXML
     private ImageView americanFlag;
 
-
-    public java.awt.Label getStatusLabel() {
-        return null;
-    }
-
-
-
     void translateEnglish() {
         Locale currentLocale = new Locale("en");
 
         ResourceBundle translate = ResourceBundle.getBundle("translation.content", currentLocale);
         studentApply_btn.setText(translate.getString("applyInDormitory_btn"));
-        Studentstatus_btn.setText(translate.getString("statusi_roomdetails"));
-        Status_of_std.setText(translate.getString("Status_of_std"));
-        Dormitory_status.setText(translate.getString("Dormitory_status"));
-        Room_status.setText(translate.getString("Room_status"));
+        Status_of_std.setText(translate.getString("statusi_roomdetails"));
+        dormitory_stds.setText(translate.getString("Dormitory_status"));
+        room_stds.setText(translate.getString("Room_status"));
         wlcstudent_status.setText(translate.getString("wlc_student_rd"));
         signout_status.setText(translate.getString("Signout_dashboard"));
         roomDetails_btn1.setText(translate.getString("RoomDetails"));
-
-
-
-
+        prn_std.setText(translate.getString("personalNumber1"));
     }
 
     void translateAlbanian() {
@@ -90,20 +101,26 @@ public class StudentStatus_Controller implements Initializable {
 
         ResourceBundle translate = ResourceBundle.getBundle("translation.content", currentLocale);
         studentApply_btn.setText(translate.getString("applyInDormitory_btn"));
-        Studentstatus_btn.setText(translate.getString("statusi_roomdetails"));
-        Status_of_std.setText(translate.getString("Status_of_std"));
-        Dormitory_status.setText(translate.getString("Dormitory_status"));
-        Room_status.setText(translate.getString("Room_status"));
+        Status_of_std.setText(translate.getString("statusi_roomdetails"));
+        dormitory_stds.setText(translate.getString("Dormitory_status"));
+        room_stds.setText(translate.getString("Room_status"));
         wlcstudent_status.setText(translate.getString("wlc_student_rd"));
         signout_status.setText(translate.getString("Signout_dashboard"));
         roomDetails_btn1.setText(translate.getString("RoomDetails"));
-
-
-
+        prn_std.setText(translate.getString("personalNumber1"));
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Initialize the table and set up its columns
+        prn_std.setCellValueFactory(new PropertyValueFactory<>("personal_number"));
+        status_stds.setCellValueFactory(new PropertyValueFactory<>("statusS"));
+        dormitory_stds.setCellValueFactory(new PropertyValueFactory<>("dormitory"));
+        room_stds.setCellValueFactory(new PropertyValueFactory<>("room"));
+
+        // Initialize the table data
+        tableData = FXCollections.observableArrayList();
+        tableView.setItems(tableData);
 
         Locale.setDefault(new Locale("sq"));
         albanianFlag.setOnMouseClicked(e -> {
@@ -112,14 +129,64 @@ public class StudentStatus_Controller implements Initializable {
         americanFlag.setOnMouseClicked(e -> {
             translateEnglish();
         });
+    }
 
+    @FXML
+    public void searchpn(ActionEvent event) {
+        String personalNumber = personalNumberField.getText();
+
+        // Clear the previous table data
+        tableData.clear();
+
+        // Fetch the data from the database for the entered personal number
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            String query = "SELECT * FROM Application WHERE personal_number = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, personalNumber);
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if a row exists with the entered personal number
+            if (resultSet.next()) {
+                Application application = new Application(
+                        resultSet.getInt("application_id"),
+                        resultSet.getInt("study_year"),
+                        resultSet.getString("university"),
+                        resultSet.getString("phone_no"),
+                        resultSet.getString("name"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("gender"),
+                        resultSet.getString("birth_date"),
+                        resultSet.getString("city"),
+                        resultSet.getString("personal_number"),
+                        resultSet.getDouble("average_grade"),
+                        resultSet.getString("image"),
+                        resultSet.getString("room"),
+                        resultSet.getInt("dormitory"),
+                        resultSet.getString("statusS")
+                );
+
+                tableData.add(application);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Personal Number Not Found");
+                alert.setHeaderText(null);
+                alert.setContentText("The personal number you entered was not found.");
+                alert.showAndWait();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle any potential exceptions or show an error message
+        }
+
+        // Refresh the table view to display the data
+        tableView.refresh();
     }
 
     public void updateStatusLabel(String message) {
-            statusLabel.setText(message);
+        statusLabel.setText(message);
     }
 
-    public void switchToLogIn(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void switchToLogIn(ActionEvent actionEvent) throws IOException {
         logout_btn.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/controllers/Login.fxml"));
         Stage stage = new Stage();
@@ -128,7 +195,7 @@ public class StudentStatus_Controller implements Initializable {
         stage.show();
     }
 
-    public void switchToStudentApply(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void switchToStudentApply(ActionEvent actionEvent) throws IOException {
         studentApply_btn.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/controllers/Student_Dashboard.fxml"));
         Stage stage = new Stage();
@@ -137,23 +204,12 @@ public class StudentStatus_Controller implements Initializable {
         stage.show();
     }
 
-
-    @FXML
-    void initialize() {
-        assert Studentstatus_btn != null : "fx:id=\"Studentstatus_btn\" was not injected: check your FXML file 'StudentStatus.fxml'.";
-        assert logout_btn != null : "fx:id=\"logout_btn\" was not injected: check your FXML file 'StudentStatus.fxml'.";
-        assert statusLabel != null : "fx:id=\"status_field\" was not injected: check your FXML file 'StudentStatus.fxml'.";
-        assert studentApply_btn != null : "fx:id=\"studentApply_btn\" was not injected: check your FXML file 'StudentStatus.fxml'.";
-
-    }
-
-    public void switchToRoomDetails(ActionEvent event) throws IOException{
+    public void switchToRoomDetails(ActionEvent event) throws IOException {
         roomDetails_btn1.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/controllers/Room_Details.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 }
